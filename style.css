@@ -487,19 +487,13 @@ body {
 }
 /* Thẻ Landmark - Phố Cổ Hà Nội */
 .pho-co-bg {
-  /* Giữ lớp phủ gradient tối nhẹ ở đáy để kích chữ trắng nổi lên, phần trên để ảnh nguyên bản */
-  background-image: linear-gradient(to top, rgba(7, 31, 28, 0.7) 0%, rgba(7, 31, 28, 0.2) 50%, transparent 100%), url('Images/phoco.webp') !important; /* Khớp đúng tên file pho_co_bg.jpg trong folder images của bạn */
-  
-  /* Cấu hình hiển thị full hình chuẩn, tự co giãn ôm khít khung chứa */
+  background-image: linear-gradient(to top, rgba(7, 31, 28, 0.6) 0%, rgba(7, 31, 28, 0.1) 50%, transparent 100%), url('Images/phoco.webp') !important; 
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
-  
-  /* Tạo độ mượt mà khi di chuột vào (Hover) */
   transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
 }
 
-/* Hiệu ứng phóng to nền ảnh đồng bộ khi hover card */
 .landmark-card:hover .pho-co-bg {
   transform: scale(1.06) !important;
 }
