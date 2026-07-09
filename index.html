@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hà Nội – Nghìn Năm Văn Hiến. Khám phá chiều sâu lịch sử, danh thắng kỳ vĩ, mùa thu thơ mộng và hương vị ẩm thực đặc sắc của thủ đô ngàn năm văn hiến." />
+  <title>Hà Nội – Nghìn Năm Văn Hiến</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_GA_TRACKING_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'YOUR_GA_TRACKING_ID');
+  </script>
+  <!-- Google Fonts: Playfair Display (display) + Lora (body) + Inter (UI labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            emerald:  { DEFAULT: '#0F4C43', dark: '#0a3530', light: '#1a6b5e' },
+            mustard:  { DEFAULT: '#E3A857', light: '#f0c478', dark: '#c48a35' },
+            offwhite: { DEFAULT: '#F9F6F0', warm: '#f0ebe1' },
+            sepia:    { DEFAULT: '#8B6914' },
+          },
+          fontFamily: {
+            serif:   ['Lora', 'Georgia', 'serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+          fontSize: {
+            'body': ['1.125rem', { lineHeight: '2' }],
+          },
+        }
+      }
+    }
+  </script>
+  <!-- AOS – Animate On Scroll -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-offwhite font-serif overflow-x-hidden">
+  <!-- =============================================
+       NAVIGATION – Glassmorphism sticky bar
+  ============================================= -->
+  <nav id="navbar" class="glass-nav fixed top-0 left-0 w-full z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="nav-logo flex items-center gap-3 group">
+        <div class="logo-emblem w-11 h-11 rounded-full border-2 border-mustard flex items-center justify-center">
+          <span class="text-mustard text-lg font-display font-bold">HN</span>
+        </div>
+        <span class="text-offwhite font-display text-lg tracking-[0.15em] hidden sm:block" style="font-style:italic;">Hà Nội</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-10">
+        <li><a href="#lich-su"    class="nav-link font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard transition-colors duration-300">Lịch Sử</a></li>
+        <li><a href="#mua-thu"   class="nav-link font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard transition-colors duration-300">Mùa Thu</a></li>
+        <li><a href="#danh-thang" class="nav-link font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard transition-colors duration-300">Danh Thắng</a></li>
+        <li><a href="#am-thuc"    class="nav-link font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard transition-colors duration-300">Ẩm Thực</a></li>
+      </ul>
+      <button id="menu-toggle" class="md:hidden text-offwhite focus:outline-none" aria-label="Mở menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-emerald-dark/97 backdrop-blur-md border-t border-mustard/10">
+      <ul class="flex flex-col gap-0 px-6 py-4">
+        <li><a href="#lich-su"    class="mobile-link block py-3 font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard border-b border-offwhite/5 transition-colors" onclick="closeMobileMenu()">Lịch Sử</a></li>
+        <li><a href="#mua-thu"   class="mobile-link block py-3 font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard border-b border-offwhite/5 transition-colors" onclick="closeMobileMenu()">Mùa Thu</a></li>
+        <li><a href="#danh-thang" class="mobile-link block py-3 font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard border-b border-offwhite/5 transition-colors" onclick="closeMobileMenu()">Danh Thắng</a></li>
+        <li><a href="#am-thuc"    class="mobile-link block py-3 font-sans text-xs uppercase tracking-[0.2em] text-offwhite/80 hover:text-mustard transition-colors" onclick="closeMobileMenu()">Ẩm Thực</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- =============================================
+       HERO SECTION
+  ============================================= -->
+  <section id="hero" class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="hero-bg absolute inset-0 z-0"></div>
+    <div class="hero-overlay absolute inset-0 z-0"></div>
+    <div class="orb orb-1 absolute z-0"></div>
+    <div class="orb orb-2 absolute z-0"></div>
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <p data-aos="fade-down" data-aos-delay="100"
+         class="font-sans text-mustard text-xs uppercase tracking-[0.45em] mb-10 flex items-center justify-center gap-4">
+        <span class="inline-block w-14 h-px bg-mustard/50"></span>
+        Thủ đô nghìn năm văn hiến
+        <span class="inline-block w-14 h-px bg-mustard/50"></span>
+      </p>
+      <h1 data-aos="fade-up" data-aos-delay="200"
+          class="font-display text-offwhite leading-none mb-6 hero-title">
+        Hà Nội
+      </h1>
+      <div data-aos="fade-up" data-aos-delay="360"
+           class="flex items-center justify-center gap-5 mb-10">
+        <span class="block w-28 h-px bg-mustard/40"></span>
+        <span class="font-display text-mustard text-lg md:text-xl tracking-[0.18em]" style="font-style:italic;">Nghìn Năm Văn Hiến</span>
+        <span class="block w-28 h-px bg-mustard/40"></span>
+      </div>
+      <p data-aos="fade-up" data-aos-delay="500"
+         class="font-serif text-offwhite/88 text-xl md:text-2xl max-w-3xl mx-auto mb-14 hero-lead">
+        Có một mùa thu Hà Nội không thể lẫn vào đâu được — khi những chiếc lá sấu vàng rụng im lìm trên mặt hồ phẳng lặng, khi làn gió heo may se lạnh khẽ chạm vào vai người, và cả thành phố như cùng thở chậm lại, lắng nghe tiếng vọng từ nghìn năm sâu thẳm của đất kinh kỳ...
+      </p>
+      <div data-aos="fade-up" data-aos-delay="660" class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#lich-su" id="btn-kham-pha"
+           class="hero-btn-primary font-sans text-xs uppercase tracking-[0.2em] px-9 py-4 rounded-full border-2 border-mustard text-mustard hover:bg-mustard hover:text-emerald-dark transition-all duration-350 font-semibold">
+          Khám Phá Lịch Sử
+        </a>
+        <a href="#mua-thu" id="btn-mua-thu"
+           class="font-sans text-xs uppercase tracking-[0.2em] px-9 py-4 rounded-full border-2 border-offwhite/35 text-offwhite/75 hover:border-mustard/60 hover:text-mustard transition-all duration-350">
+          Mùa Thu Hà Nội
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
+      <span class="font-sans text-offwhite/35 text-[0.65rem] uppercase tracking-[0.4em]">Cuộn xuống</span>
+      <div class="relative w-px h-14 bg-gradient-to-b from-mustard/50 to-transparent">
+        <div class="scroll-drop absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-mustard"></div>
+      </div>
+    </div>
+  </section>
+  <!-- =============================================
+       HISTORY SECTION
+  ============================================= -->
+  <section id="lich-su" class="section-breathing relative overflow-hidden bg-offwhite">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-24">
+        <p data-aos="fade-down"
+           class="font-sans text-emerald text-xs uppercase tracking-[0.45em] mb-5 flex items-center justify-center gap-4">
+          <span class="inline-block w-10 h-px bg-emerald/50"></span>
+          Hành trình nghìn năm
+          <span class="inline-block w-10 h-px bg-emerald/50"></span>
+        </p>
+        <h2 data-aos="fade-up" class="font-display text-emerald mb-7 section-title">
+          Lịch Sử Thăng Long – Hà Nội
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="160"
+           class="font-serif text-emerald/65 text-body max-w-2xl mx-auto" style="font-style:italic; line-height:1.9;">
+          Từ Chiếu Dời Đô năm 1010 của vua Lý Công Uẩn đến thủ đô hoa lệ của ngày hôm nay — một cuộc hành trình xuyên nghìn năm lịch sử không bao giờ kể hết.
+        </p>
+      </div>
+      <div class="history-narrative relative">
+        <div class="timeline-spine hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-emerald/15 via-mustard/35 to-emerald/15 -translate-x-1/2"></div>
+        <!-- Era 1 · 1010 -->
+        <div class="history-era mb-28 lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+          <div data-aos="fade-right" data-aos-duration="1200" class="lg:text-right mb-12 lg:mb-0">
+            <div class="era-tag inline-block font-sans text-[0.7rem] uppercase tracking-[0.3em] text-mustard border border-mustard/35 px-4 py-1.5 rounded-full mb-5">1010 · Chiếu Dời Đô</div>
+            <h3 class="font-display text-emerald mb-6 era-heading">Thuở Khai Nguyên của Đất Kinh Kỳ</h3>
+            <p class="font-serif text-emerald/80 text-body leading-[2] mb-5">
+              Vào mùa thu năm Canh Tuất (1010), vua Lý Thái Tổ — Lý Công Uẩn — đã ban Chiếu Dời Đô, rời kinh đô từ Hoa Lư chật hẹp ra thành Đại La rộng lớn, đặt tên mới là <em>Thăng Long</em> — "Rồng Bay Lên". Tương truyền, khi thuyền rồng vừa cập bến, một con rồng vàng hiện ra từ mặt sông Hồng phun lên trời xanh những tia lửa rực rỡ — điềm lành của đất trời, báo hiệu một triều đại hưng thịnh và một kinh đô vĩ đại sẽ trường tồn cùng dân tộc Việt.
+            </p>
+            <p class="font-serif text-emerald/65 leading-[2]" style="font-size:1rem;">
+              Trong Chiếu Dời Đô, nhà vua viết: <em>"Vả lại, thành Đại La, kinh đô cũ của Cao Vương: ở vào nơi trung tâm trời đất; được cái thế rồng cuộn hổ ngồi. Đã đúng ngôi nam bắc đông tây; lại tiện hướng nhìn sông dựa núi. Địa thế rộng mà bằng; đất đai cao mà thoáng."</em> — Những lời ấy, hơn một nghìn năm sau, vẫn còn vang vọng trong từng ngọn gió thổi qua Hồ Tây mỗi chiều buông.
+            </p>
+          </div>
+          <div data-aos="fade-left" data-aos-duration="1200" class="relative">
+            <div class="era-image-frame rounded-2xl overflow-hidden shadow-2xl">
+              <div class="era-img-1 w-full h-80 lg:h-[420px] flex items-end p-7">
+                <div class="glass-caption rounded-xl p-4">
+                  <p class="font-serif text-offwhite text-sm" style="font-style:italic; line-height:1.7;">Thành Thăng Long — Nơi rồng thiêng hiện giữa mây trời, khởi nguồn cho nghìn năm văn hiến</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-dot hidden lg:flex absolute top-1/2 -left-10 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-mustard border-4 border-offwhite shadow-lg z-10"></div>
+          </div>
+        </div>
+        <!-- Era 2 · Nhà Trần -->
+        <div class="history-era mb-28 lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+          <div data-aos="fade-right" data-aos-duration="1200" class="relative order-2 lg:order-1">
+            <div class="era-image-frame rounded-2xl overflow-hidden shadow-2xl">
+              <div class="era-img-2 w-full h-80 lg:h-[420px] flex items-end p-7">
+                <div class="glass-caption rounded-xl p-4">
+                  <p class="font-serif text-offwhite text-sm" style="font-style:italic; line-height:1.7;">Hào khí Đông A — Ba lần đại phá quân Nguyên Mông, ba lần Thăng Long rực sáng</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-dot hidden lg:flex absolute top-1/2 -right-10 translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-mustard border-4 border-offwhite shadow-lg z-10"></div>
+          </div>
+          <div data-aos="fade-left" data-aos-duration="1200" class="mb-12 lg:mb-0 order-1 lg:order-2">
+            <div class="era-tag inline-block font-sans text-[0.7rem] uppercase tracking-[0.3em] text-mustard border border-mustard/35 px-4 py-1.5 rounded-full mb-5">1226 – 1400 · Triều Trần</div>
+            <h3 class="font-display text-emerald mb-6 era-heading">Hào Khí Đông A Rực Sáng</h3>
+            <p class="font-serif text-emerald/80 text-body leading-[2] mb-5">
+              Dưới triều đại nhà Trần hào hùng, Thăng Long trở thành trung tâm của cuộc kháng chiến chống quân Nguyên Mông — đội quân bách chiến bách thắng đã khuất phục hầu hết châu Á và châu Âu. Ba lần quân Nguyên tiến vào kinh thành, ba lần quân dân Đại Việt đứng lên phản công, và ba lần Thăng Long được giải phóng. Hội nghị Diên Hồng vang lên tiếng hô vang <em>"Đánh! Đánh! Đánh!"</em> của muôn vạn quân thần — khí thế ấy đã đi vào lịch sử như một trong những trang hào hùng nhất của dân tộc.
+            </p>
+            <p class="font-serif text-emerald/65 leading-[2]" style="font-size:1rem;">
+              Cũng trong thời kỳ này, Thăng Long trở thành trung tâm văn hóa lớn nhất Đông Nam Á. Văn Miếu mở rộng, các kỳ thi Đại khoa được tổ chức nghiêm túc, thơ văn chữ Nôm nở rộ, và những giá trị nhân văn sâu sắc nhất của người Việt bắt đầu được định hình ngay trên đất kinh kỳ rồng thiêng này.
+            </p>
+          </div>
+        </div>
+        <!-- Era 3 · Hoa Lệ -->
+        <div class="history-era mb-28 lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+          <div data-aos="fade-right" data-aos-duration="1200" class="lg:text-right mb-12 lg:mb-0">
+            <div class="era-tag inline-block font-sans text-[0.7rem] uppercase tracking-[0.3em] text-mustard border border-mustard/35 px-4 py-1.5 rounded-full mb-5">TK XI – XIX · Thịnh Trị</div>
+            <h3 class="font-display text-emerald mb-6 era-heading">Nghìn Năm Hoa Lệ Trên Đất Kinh Kỳ</h3>
+            <p class="font-serif text-emerald/80 text-body leading-[2] mb-5">
+              Qua các triều đại Lý, Trần, Lê, Mạc rồi Lê Trung Hưng, Thăng Long luôn giữ vị trí trung tâm của đất nước. Các phường nghề thủ công như Hàng Đào, Hàng Bạc, Hàng Gai hình thành và phát triển rực rỡ, tạo nên diện mạo độc đáo của 36 phố phường. Thương nhân từ Trung Quốc, Nhật Bản, Bồ Đào Nha, Hà Lan đều tìm đến Thăng Long, biến kinh thành thành trung tâm buôn bán sầm uất bậc nhất khu vực.
+            </p>
+            <p class="font-serif text-emerald/65 leading-[2]" style="font-size:1rem;">
+              Năm 1831, vua Minh Mạng đổi tên Thăng Long thành <em>Hà Nội</em> — mang nghĩa "bên trong sông", bởi thành phố được bao bọc bởi hai con sông Hồng và Tô Lịch. Cái tên giản dị mà ấm áp ấy đã gắn bó với thành phố cho đến ngày hôm nay, trở thành hai chữ thân thuộc nhất trong trái tim mỗi người Việt.
+            </p>
+          </div>
+          <div data-aos="fade-left" data-aos-duration="1200" class="relative">
+            <div class="era-image-frame rounded-2xl overflow-hidden shadow-2xl">
+              <div class="era-img-3 w-full h-80 lg:h-[420px] flex items-end p-7">
+                <div class="glass-caption rounded-xl p-4">
+                  <p class="font-serif text-offwhite text-sm" style="font-style:italic; line-height:1.7;">36 phố phường — Kinh thành Thăng Long thuở hưng thịnh, tấp nập thương hồ và nghệ nhân tài hoa</p>
+                </div>
+              </div>
+            </div>
+            <div class="timeline-dot hidden lg:flex absolute top-1/2 -left-10 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-mustard border-4 border-offwhite shadow-lg z-10"></div>
+          </div>
+        </div>
+        <!-- Era 4 · Hiện Đại -->
+        <div data-aos="fade-up" data-aos-duration="1200" class="max-w-4xl mx-auto text-center">
+          <div class="era-tag inline-block font-sans text-[0.7rem] uppercase tracking-[0.3em] text-mustard border border-mustard/35 px-4 py-1.5 rounded-full mb-7">1945 – Nay · Hà Nội Hiện Đại</div>
+          <h3 class="font-display text-emerald mb-7 era-heading">Từ Kháng Chiến Đến Phục Hưng</h3>
+          <p class="font-serif text-emerald/80 text-body leading-[2] mb-6">
+            Ngày 2 tháng 9 năm 1945, tại Quảng trường Ba Đình lịch sử, Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn Độc lập khai sinh nước Việt Nam Dân chủ Cộng hòa — và Hà Nội trở thành thủ đô của một dân tộc vừa bứt khỏi ách thực dân sau gần một thế kỷ. Qua hai cuộc kháng chiến chống Pháp và chống Mỹ, Hà Nội kiên cường đứng vững. Những trận bom B-52 của chiến dịch Linebacker II năm 1972 đã không khuất phục được ý chí của người dân thủ đô. Hà Nội trở thành biểu tượng bất khuất, là lương tâm và niềm tự hào của cả dân tộc Việt Nam.
+          </p>
+          <p class="font-serif text-emerald/65 leading-[2]" style="font-size:1rem;">
+            Ngày nay, Hà Nội của thế kỷ XXI vẫn giữ được linh hồn của một thành phố nghìn năm văn hiến — những con đường rợp bóng cây xanh, những ngôi biệt thự Pháp cổ kính vẫn đứng đó như chứng nhân của lịch sử, những buổi sáng sương mờ bên Hồ Tây vẫn thơ mộng như ngàn đời, và những quán cà phê nhỏ chen giữa phố cổ vẫn lặng lẽ kể chuyện thời gian cho bất cứ ai đủ kiên nhẫn lắng nghe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Quote break 1 -->
+  <div class="quote-break relative overflow-hidden bg-emerald py-24">
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <blockquote data-aos="fade-up"
+         class="font-display text-offwhite/92 leading-relaxed" style="font-size:clamp(1.5rem,4vw,2.6rem); font-style:italic;">
+        "Hà Nội của tôi — thành phố mà mỗi góc phố đều chứa đựng một bài thơ, mỗi làn gió đều mang theo hương vị của ký ức."
+      </blockquote>
+      <p data-aos="fade-up" data-aos-delay="200" class="font-sans text-mustard text-xs uppercase tracking-[0.35em] mt-7">— Trái tim người Hà Nội —</p>
+    </div>
+  </div>
+  <!-- =============================================
+       MÙA THU HÀ NỘI – NEW SECTION
+  ============================================= -->
+  <section id="mua-thu" class="section-breathing relative overflow-hidden bg-offwhite-warm">
+    <!-- Decorative autumn leaves motif -->
+    <div class="autumn-decor absolute inset-0 pointer-events-none opacity-[0.035]"></div>
+    <div class="absolute top-20 right-10 w-72 h-72 bg-mustard/8 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-20 left-10 w-56 h-56 bg-emerald/6 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <!-- Section header -->
+      <div class="text-center mb-24">
+        <p data-aos="fade-down"
+           class="font-sans text-emerald text-xs uppercase tracking-[0.45em] mb-5 flex items-center justify-center gap-4">
+          <span class="inline-block w-10 h-px bg-emerald/50"></span>
+          Cảm xúc bốn mùa
+          <span class="inline-block w-10 h-px bg-emerald/50"></span>
+        </p>
+        <h2 data-aos="fade-up" class="font-display text-emerald mb-7 section-title">
+          Mùa Thu Hà Nội
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="160"
+           class="font-serif text-emerald/65 text-body max-w-2xl mx-auto" style="font-style:italic; line-height:1.9;">
+          Nếu Hà Nội có một mùa đẹp nhất, đó chắc chắn là mùa thu — khoảng thời gian mà cả thành phố như hóa thành một bức tranh thủy mặc được vẽ bằng ánh vàng, hương thơm và nỗi nhớ.
+        </p>
+      </div>
+      <!-- Feature: full-width atmospheric intro -->
+      <div data-aos="fade-up" data-aos-duration="1400"
+           class="autumn-hero-banner rounded-3xl overflow-hidden shadow-2xl mb-24 relative">
+        <div class="autumn-bg w-full h-[420px] md:h-[540px] flex items-end">
+          <div class="autumn-hero-text w-full p-10 md:p-16">
+            <p class="font-sans text-mustard text-xs uppercase tracking-[0.4em] mb-4">Hà Nội · Tháng Chín đến Tháng Mười Một</p>
+            <h3 class="font-display text-offwhite mb-5" style="font-size:clamp(2rem,5vw,3.5rem); font-style:italic; text-shadow: 0 2px 20px rgba(0,0,0,0.6);">
+              Khi Thành Phố Khoác Áo Vàng
+            </h3>
+            <p class="font-serif text-offwhite/85 max-w-2xl" style="font-size:1.05rem; line-height:1.9;">
+              Có những buổi sáng tháng Mười, khi bước ra đường và cảm nhận làn hơi lạnh nhẹ đầu tiên của mùa thu chạm vào da thịt — đó là lúc người Hà Nội biết rằng mùa đẹp nhất trong năm đã về. Bầu trời trong xanh một màu lam nhạt không một gợn mây, ánh nắng trở nên vàng ươm và dịu dàng hơn, rải những vệt sáng ấm áp qua từng tán cây cổ thụ trên phố Phan Đình Phùng, phố Điện Biên Phủ...
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Three sensory columns -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-24">
+        <!-- Hoa Sữa -->
+        <div data-aos="fade-up" data-aos-delay="0" class="autumn-card group">
+          <div class="autumn-card-icon">
+            <svg class="w-6 h-6 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-emerald text-2xl mb-4 group-hover:text-emerald-light transition-colors" style="font-style:italic;">Hương Hoa Sữa</h3>
+          <p class="font-serif text-emerald/70 leading-[2]" style="font-size:1rem;">
+            Không có mùi hương nào đặc trưng cho mùa thu Hà Nội hơn hương hoa sữa. Những chiều cuối tháng Chín, đầu tháng Mười, cây hoa sữa trên khắp các con phố cổ bỗng nhiên bung nở — những chùm hoa trắng nhỏ li ti, mong manh như hơi thở, tỏa ra làn hương ngọt ngào nồng nàn đến nao lòng. Người ta yêu Hà Nội mùa thu một phần vì mùi hoa sữa ấy — mùi hương có thể gọi về ký ức của bất kỳ ai đã từng sống qua một mùa thu ở đất kinh kỳ này.
+          </p>
+          <p class="font-serif text-emerald/55 mt-4 leading-[1.9]" style="font-size:0.95rem;">
+            Có người yêu hoa sữa đến mức chỉ cần thoáng ngửi thấy mùi ấy trong gió, dù ở bất cứ đâu trên thế giới, cũng lập tức nhớ về Hà Nội như nhớ về nhà.
+          </p>
+        </div>
+        <!-- Lá Sấu Vàng -->
+        <div data-aos="fade-up" data-aos-delay="150" class="autumn-card group">
+          <div class="autumn-card-icon">
+            <svg class="w-6 h-6 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3C7.582 3 4 7.582 4 12s3.582 9 8 9 8-4.582 8-9-3.582-9-8-9zm0 0c0 4.418-1.79 8-4 8m4-8c0 4.418 1.79 8 4 8m-4 0v9"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-emerald text-2xl mb-4 group-hover:text-emerald-light transition-colors" style="font-style:italic;">Lá Sấu Vàng Rụng</h3>
+          <p class="font-serif text-emerald/70 leading-[2]" style="font-size:1rem;">
+            Cây sấu là cây đặc trưng của Hà Nội — loài cây cổ thụ cao lớn, tán rộng, đã đứng trên các con phố từ thời Pháp thuộc. Vào thu, những chiếc lá sấu chuyển dần từ xanh sang vàng rồi rụng xuống, phủ đầy vỉa hè và mặt đường một lớp thảm vàng mỏng manh, tươi mới. Mỗi cơn gió thổi qua, lá lại xào xạc rồi bay vòng vòng trong không khí như những cánh bướm nhỏ đang nhảy múa từ biệt mùa hè.
+          </p>
+          <p class="font-serif text-emerald/55 mt-4 leading-[1.9]" style="font-size:0.95rem;">
+            Người ta hay nhặt những chiếc lá sấu vàng đẹp nhất, ép vào trang sách như một cách lưu giữ mùa thu Hà Nội mãi mãi không phai.
+          </p>
+        </div>
+        <!-- Gió Heo May -->
+        <div data-aos="fade-up" data-aos-delay="300" class="autumn-card group">
+          <div class="autumn-card-icon">
+            <svg class="w-6 h-6 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-emerald text-2xl mb-4 group-hover:text-emerald-light transition-colors" style="font-style:italic;">Gió Heo May Se Lạnh</h3>
+          <p class="font-serif text-emerald/70 leading-[2]" style="font-size:1rem;">
+            <em>Heo may</em> — người Hà Nội gọi làn gió mùa thu đầu tiên bằng cái tên ấy, nghe vừa bí ẩn vừa thân thương. Đó là luồng không khí se lạnh từ phương bắc thổi về, chạm nhẹ lên vai người đi đường như một lời nhắn nhủ: mùa hè đã qua rồi. Gió heo may không lạnh như gió mùa đông bắc, không ấm như gió hè — nó lơ lửng ở một nhiệt độ kỳ lạ, đủ để bạn cảm thấy dễ chịu nhưng cũng đủ để gợi lên một nỗi buồn bâng khuâng, nhớ nhung không rõ ràng.
+          </p>
+          <p class="font-serif text-emerald/55 mt-4 leading-[1.9]" style="font-size:0.95rem;">
+            Người Hà Nội xa quê thường nói: "Nhớ nhất là cái lạnh heo may đầu mùa. Cái lạnh ấy chỉ có ở Hà Nội, không nơi nào khác có được."
+          </p>
+        </div>
+      </div>
+      <!-- Deep-dive narrative -->
+      <div class="autumn-narrative lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+        <div data-aos="fade-right" data-aos-duration="1200">
+          <div class="relative">
+            <div class="autumn-img-1 rounded-2xl overflow-hidden shadow-2xl float-animation w-full h-80 lg:h-[480px]"></div>
+            <div class="absolute -bottom-7 -right-7 bg-mustard/90 backdrop-blur-sm rounded-2xl p-5 shadow-xl">
+              <p class="font-display text-emerald-dark text-xl font-bold" style="font-style:italic; line-height:1.2;">Hà Nội</p>
+              <p class="font-sans text-emerald-dark text-[0.65rem] uppercase tracking-widest mt-1">Mùa Thu</p>
+            </div>
+            <div class="absolute -top-5 -left-5 w-20 h-20 rounded-full border border-mustard/25 pointer-events-none"></div>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="1200">
+          <div class="font-sans text-emerald text-xs uppercase tracking-[0.4em] mb-6 flex items-center gap-3">
+            <span>Bức tranh cảm xúc</span>
+            <span class="w-8 h-px bg-emerald/40"></span>
+          </div>
+          <h3 class="font-display text-emerald mb-7" style="font-size:clamp(1.8rem,4vw,3rem); font-style:italic;">Hà Nội Tháng Mười</h3>
+          <p class="font-serif text-emerald/80 text-body leading-[2] mb-6">
+            Mùa thu Hà Nội đẹp một vẻ đẹp chầm chậm, không phô trương. Không có những rừng lá đỏ rực rỡ như mùa thu Nhật Bản hay Bắc Mỹ — vẻ đẹp của mùa thu Hà Nội là vẻ đẹp của sự tiết chế, của những sắc màu trung tính ấm áp, của ánh sáng vàng dịu tràn qua kẽ lá, của bóng chiều đổ dài trên mặt hồ phẳng lặng như gương.
+          </p>
+          <p class="font-serif text-emerald/70 leading-[2] mb-6" style="font-size:1rem;">
+            Vào những chiều thu đẹp nhất, Hồ Tây phủ một lớp sương mỏng lam nhạt, và những đoàn chim di cư từ phương bắc đáp xuống mặt nước yên tĩnh — từng đàn cò trắng bay thành hàng ngang qua bầu trời hồng hoàng hôn. Phố Thanh Niên thơm mùi hoa sữa từ hai hàng cây cao ngút, người đạp xe chầm chậm qua con đường nối hai hồ, không ai muốn về nhà sớm.
+          </p>
+          <p class="font-serif text-emerald/70 leading-[2]" style="font-size:1rem;">
+            Đêm thu Hà Nội, trời se lạnh, người ta hay tụ tập trong những quán cà phê nhỏ ven hồ, uống trà nóng hoặc cà phê đen đặc, ngồi nhìn sương đêm dâng lên từ mặt nước. Đó là thứ hạnh phúc mà không cần ngôn từ — chỉ cần có mặt ở đó, trong khoảnh khắc ấy, giữa Hà Nội thu, là đủ.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- =============================================
+       CULTURAL TRIVIA ACCORDION
+  ============================================= -->
+  <section id="trivia" class="section-breathing bg-emerald relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full trivia-bg-texture pointer-events-none opacity-[0.04]"></div>
+    <div class="absolute top-0 right-0 w-80 h-80 bg-mustard/8 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-20">
+        <p data-aos="fade-down"
+           class="font-sans text-mustard text-xs uppercase tracking-[0.45em] mb-5 flex items-center justify-center gap-4">
+          <span class="inline-block w-10 h-px bg-mustard/50"></span>
+          Tri thức & văn hóa
+          <span class="inline-block w-10 h-px bg-mustard/50"></span>
+        </p>
+        <h2 data-aos="fade-up" class="font-display text-offwhite mb-7 section-title">
+          Bạn Có Biết?
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="150"
+           class="font-serif text-offwhite/65 text-body max-w-xl mx-auto" style="font-style:italic; line-height:1.9;">
+          Những câu chuyện thú vị ẩn sau những địa danh và món ăn nổi tiếng nhất của Hà Nội.
+        </p>
+      </div>
+      <!-- Accordion items -->
+      <div class="accordion-list flex flex-col gap-4" data-aos="fade-up" data-aos-duration="1200">
+        <!-- Item 1: 36 Phố Phường -->
+        <div class="accordion-item rounded-2xl border border-mustard/15 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between p-7 text-left group" aria-expanded="false">
+            <div class="flex items-center gap-5">
+              <div class="accordion-num font-display text-mustard text-3xl font-bold leading-none" style="font-style:italic; opacity:0.5;">01</div>
+              <div>
+                <p class="font-sans text-mustard/70 text-[0.65rem] uppercase tracking-[0.3em] mb-1">Phố Cổ Hà Nội</p>
+                <h3 class="font-display text-offwhite text-xl md:text-2xl group-hover:text-mustard transition-colors" style="font-style:italic;">
+                  Vì sao gọi là 36 Phố Phường?
+                </h3>
+              </div>
+            </div>
+            <div class="accordion-chevron flex-shrink-0 ml-4 w-8 h-8 rounded-full border border-mustard/30 flex items-center justify-center transition-all duration-400 group-hover:border-mustard">
+              <svg class="w-4 h-4 text-mustard/70 transition-transform duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </button>
+          <div class="accordion-body hidden px-7 pb-8">
+            <div class="pt-2 border-t border-mustard/10">
+              <p class="font-serif text-offwhite/80 leading-[2] mt-6" style="font-size:1rem;">
+                Con số "36" không phải là con số chính xác hay cố định. Trong văn hóa người Việt và người Hoa, số 36 (ba sáu phường) mang nghĩa tượng trưng cho sự <em>đông đúc, đầy đủ và phồn thịnh</em> — tương tự như người ta thường nói "72 phép thần thông" để chỉ phép thuật vô số kể, hay "ba sáu kế" để chỉ mưu kế đa dạng.
+              </p>
+              <p class="font-serif text-offwhite/65 leading-[2] mt-4" style="font-size:1rem;">
+                Thực tế, vào thời Lê sơ thế kỷ XV, khu vực kinh thành Thăng Long được chia thành <strong class="text-mustard/80">61 phường</strong>. Đến thời Nguyễn, con số này thay đổi nhiều lần. Các phường mang tên theo mặt hàng buôn bán chính của phường đó: Hàng Bạc (bạc), Hàng Đào (tơ lụa màu đào), Hàng Vải (vải), Hàng Chiếu (chiếu), Hàng Tre (đồ tre)... Cái tên "36 phố phường" đã trở thành danh hiệu thơ ca và văn hóa bất hủ, gợi lên hình ảnh một Thăng Long phồn hoa đô hội, buôn bán tấp nập không bao giờ ngủ.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 2: Chả Cá Lã Vọng -->
+        <div class="accordion-item rounded-2xl border border-mustard/15 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between p-7 text-left group" aria-expanded="false">
+            <div class="flex items-center gap-5">
+              <div class="accordion-num font-display text-mustard text-3xl font-bold leading-none" style="font-style:italic; opacity:0.5;">02</div>
+              <div>
+                <p class="font-sans text-mustard/70 text-[0.65rem] uppercase tracking-[0.3em] mb-1">Ẩm Thực Hà Nội</p>
+                <h3 class="font-display text-offwhite text-xl md:text-2xl group-hover:text-mustard transition-colors" style="font-style:italic;">
+                  Bí quyết của Chả Cá Lã Vọng
+                </h3>
+              </div>
+            </div>
+            <div class="accordion-chevron flex-shrink-0 ml-4 w-8 h-8 rounded-full border border-mustard/30 flex items-center justify-center transition-all duration-400 group-hover:border-mustard">
+              <svg class="w-4 h-4 text-mustard/70 transition-transform duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </button>
+          <div class="accordion-body hidden px-7 pb-8">
+            <div class="pt-2 border-t border-mustard/10">
+              <p class="font-serif text-offwhite/80 leading-[2] mt-6" style="font-size:1rem;">
+                Chả Cá Lã Vọng là một trong những đặc sản lâu đời và danh tiếng nhất của Hà Nội, đến mức cả một con phố đã được đặt tên theo món ăn này — phố Chả Cá, thuộc khu phố cổ. Món ăn sử dụng cá lăng — loại cá thịt trắng, dai, ít xương — ướp với mẻ, nghệ, gừng, mắm tôm, nước mắm ngon trong ít nhất 24 tiếng đồng hồ.
+              </p>
+              <p class="font-serif text-offwhite/65 leading-[2] mt-4" style="font-size:1rem;">
+                Bí quyết thực sự nằm ở <em>lần chiên kép</em>: cá được chiên sơ qua dầu nóng rồi để nguội, sau đó mới chiên lại trên chảo gang nóng hổi ngay trên bàn ăn cùng thì là tươi và hành lá cắt khúc — lửa than, khói thơm, mùi nghệ quyện với hành thì là tạo nên một không gian ẩm thực gần như nghi lễ. Ăn kèm với bún rối, lạc rang, mắm tôm chanh và rau thơm — đó là bản giao hưởng hoàn hảo của ẩm thực Hà Thành.
+              </p>
+              <p class="font-serif text-offwhite/65 leading-[2] mt-4" style="font-size:1rem;">
+                Tên "Lã Vọng" được lấy từ điển tích Trung Hoa về Khương Tử Nha (Lã Vọng) — ông lão ngồi câu cá bên bờ sông chờ thời, tượng trưng cho sự kiên nhẫn và tri thức ẩn chứa bên trong vẻ đơn giản bên ngoài — một triết lý hoàn toàn phù hợp với cách người Hà Nội thưởng thức ẩm thực.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Item 3: Cầu Thê Húc -->
+        <div class="accordion-item rounded-2xl border border-mustard/15 overflow-hidden">
+          <button class="accordion-trigger w-full flex items-center justify-between p-7 text-left group" aria-expanded="false">
+            <div class="flex items-center gap-5">
+              <div class="accordion-num font-display text-mustard text-3xl font-bold leading-none" style="font-style:italic; opacity:0.5;">03</div>
+              <div>
+                <p class="font-sans text-mustard/70 text-[0.65rem] uppercase tracking-[0.3em] mb-1">Di tích lịch sử</p>
+                <h3 class="font-display text-offwhite text-xl md:text-2xl group-hover:text-mustard transition-colors" style="font-style:italic;">
+                  Ý nghĩa của Cầu Thê Húc
+                </h3>
+              </div>
+            </div>
+            <div class="accordion-chevron flex-shrink-0 ml-4 w-8 h-8 rounded-full border border-mustard/30 flex items-center justify-center transition-all duration-400 group-hover:border-mustard">
+              <svg class="w-4 h-4 text-mustard/70 transition-transform duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </div>
+          </button>
+          <div class="accordion-body hidden px-7 pb-8">
+            <div class="pt-2 border-t border-mustard/10">
+              <p class="font-serif text-offwhite/80 leading-[2] mt-6" style="font-size:1rem;">
+                <strong class="text-mustard/80">Thê Húc</strong> trong tiếng Hán Nôm có nghĩa là <em>"nơi đậu lại của ánh sáng mặt trời buổi sáng sớm"</em> — một cái tên tuyệt đẹp, gợi lên hình ảnh ánh bình minh rực rỡ chiếu thẳng vào cây cầu đỏ sơn son mỗi khi mặt trời mọc hướng đông.
+              </p>
+              <p class="font-serif text-offwhite/65 leading-[2] mt-4" style="font-size:1rem;">
+                Cầu Thê Húc được xây dựng vào năm 1865, nối bờ hồ Hoàn Kiếm với đảo Ngọc — nơi tọa lạc của đền Ngọc Sơn linh thiêng. Cây cầu gỗ 15 nhịp sơn màu đỏ son, cong cong hình cánh cung phản chiếu dưới mặt hồ xanh biếc — trở thành một trong những hình ảnh biểu tượng đẹp nhất của Hà Nội, xuất hiện trong vô số tranh ảnh, bài thơ và bài hát về thành phố này.
+              </p>
+              <p class="font-serif text-offwhite/65 leading-[2] mt-4" style="font-size:1rem;">
+                Người Hà Nội có câu: <em>"Sáng sớm qua cầu Thê Húc — cảm giác như đang bước vào một thế giới khác."</em> Ánh mặt trời buổi bình minh chiếu vào cây cầu đỏ, làm mặt nước hồ lấp lánh muôn ngàn tia sáng — đó là khoảnh khắc thiêng liêng mà bất cứ ai đã một lần trải nghiệm đều không thể nào quên.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div><!-- end accordion-list -->
+    </div>
+  </section>
+  <!-- =============================================
+       LANDMARKS SECTION
+  ============================================= -->
+  <section id="danh-thang" class="section-breathing relative overflow-hidden bg-offwhite">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-24">
+        <p data-aos="fade-down"
+           class="font-sans text-emerald text-xs uppercase tracking-[0.45em] mb-5 flex items-center justify-center gap-4">
+          <span class="inline-block w-10 h-px bg-emerald/50"></span>
+          Di sản &amp; thiên nhiên
+          <span class="inline-block w-10 h-px bg-emerald/50"></span>
+        </p>
+        <h2 data-aos="fade-up" class="font-display text-emerald mb-7 section-title">
+          Những Danh Thắng Huyền Thoại
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="160"
+           class="font-serif text-emerald/65 text-body max-w-2xl mx-auto" style="font-style:italic; line-height:1.9;">
+          Ba địa danh đã trở thành linh hồn bất tử của Hà Nội — mỗi nơi là một thế giới riêng, một câu chuyện riêng chưa bao giờ cũ.
+        </p>
+      </div>
+      <div class="landmarks-grid grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        <!-- Card 1: Hồ Hoàn Kiếm -->
+        <article id="card-hoan-kiem" data-aos="fade-up" data-aos-delay="0"
+                 class="landmark-card group relative rounded-2xl overflow-hidden shadow-xl cursor-pointer">
+          <div class="card-bg hoan-kiem-bg absolute inset-0 transition-transform duration-700 group-hover:scale-110"></div>
+          <div class="card-overlay absolute inset-0 transition-opacity duration-500"></div>
+          <div class="card-default relative z-10 p-8 h-full min-h-[500px] flex flex-col justify-end transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-4">
+            <div class="card-icon w-12 h-12 rounded-full border-2 border-mustard/60 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="font-display text-offwhite text-2xl mb-2" style="font-style:italic;">Hồ Hoàn Kiếm</h3>
+            <p class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em]">Hồ Gươm · Trái tim Hà Nội</p>
+          </div>
+          <div class="card-hover absolute inset-0 z-20 p-8 flex flex-col justify-end opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+            <h3 class="font-display text-offwhite text-2xl mb-3" style="font-style:italic;">Hồ Hoàn Kiếm</h3>
+            <div class="w-10 h-px bg-mustard mb-5"></div>
+            <p class="font-serif text-offwhite/90 leading-[1.95] mb-5" style="font-size:0.95rem;">
+              Giữa lòng Hà Nội, Hồ Gươm như một viên ngọc xanh biếc đặt giữa muôn vàn ngôi nhà. Truyền thuyết kể rằng sau khi vua Lê Lợi đại phá quân Minh, rùa thần đã nổi lên đòi lại thanh kiếm báu Thuận Thiên — từ đó hồ mang tên Hoàn Kiếm, nghĩa là "Trả Gươm". Mỗi sáng sớm, từng lớp sương trắng mỏng manh như khói quyện trên mặt hồ phẳng lặng, Tháp Rùa in bóng cô đơn dưới ánh bình minh vàng nhạt — đó là hình ảnh thiêng liêng nhất, thơ mộng nhất mà Hà Nội ban tặng cho những ai đủ yêu để thức dậy sớm.
+            </p>
+            <span class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em] flex items-center gap-2">Khám phá thêm <span class="inline-block w-6 h-px bg-mustard"></span></span>
+          </div>
+        </article>
+        <!-- Card 2: Văn Miếu -->
+        <article id="card-van-mieu" data-aos="fade-up" data-aos-delay="150"
+                 class="landmark-card group relative rounded-2xl overflow-hidden shadow-xl cursor-pointer md:mt-14">
+          <div class="card-bg van-mieu-bg absolute inset-0 transition-transform duration-700 group-hover:scale-110"></div>
+          <div class="card-overlay absolute inset-0 transition-opacity duration-500"></div>
+          <div class="card-default relative z-10 p-8 h-full min-h-[500px] flex flex-col justify-end transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-4">
+            <div class="card-icon w-12 h-12 rounded-full border-2 border-mustard/60 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <h3 class="font-display text-offwhite text-2xl mb-2" style="font-style:italic;">Văn Miếu</h3>
+            <p class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em]">Quốc Tử Giám · Mạch Nguồn Tri Thức</p>
+          </div>
+          <div class="card-hover absolute inset-0 z-20 p-8 flex flex-col justify-end opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+            <h3 class="font-display text-offwhite text-2xl mb-3" style="font-style:italic;">Văn Miếu – Quốc Tử Giám</h3>
+            <div class="w-10 h-px bg-mustard mb-5"></div>
+            <p class="font-serif text-offwhite/90 leading-[1.95] mb-5" style="font-size:0.95rem;">
+              Xây dựng từ năm 1070 dưới triều Lý Thánh Tông, Văn Miếu – Quốc Tử Giám là trường đại học đầu tiên của Việt Nam. Những tấm bia Tiến sĩ bằng đá xanh đặt trên lưng rùa đá còn lưu giữ tên tuổi của 1.307 vị Tiến sĩ qua 82 khoa thi Đình — mỗi tấm bia như một trang sử sống, nhắc nhở hậu thế về truyền thống hiếu học, tôn sư trọng đạo đã ngấm vào xương tủy người Hà Nội. Khi bước dưới những vòm cây cổ thụ xanh mát của Văn Miếu, người ta có cảm giác như đang dạo bước trong không gian vượt ra ngoài thời gian.
+            </p>
+            <span class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em] flex items-center gap-2">Khám phá thêm <span class="inline-block w-6 h-px bg-mustard"></span></span>
+          </div>
+        </article>
+        <!-- Card 3: Phố Cổ -->
+        <article id="card-pho-co" data-aos="fade-up" data-aos-delay="300"
+                 class="landmark-card group relative rounded-2xl overflow-hidden shadow-xl cursor-pointer">
+          <div class="card-bg pho-co-bg absolute inset-0 transition-transform duration-700 group-hover:scale-110"></div>
+          <div class="card-overlay absolute inset-0 transition-opacity duration-500"></div>
+          <div class="card-default relative z-10 p-8 h-full min-h-[500px] flex flex-col justify-end transition-all duration-500 group-hover:opacity-0 group-hover:translate-y-4">
+            <div class="card-icon w-12 h-12 rounded-full border-2 border-mustard/60 flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-mustard" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <h3 class="font-display text-offwhite text-2xl mb-2" style="font-style:italic;">Phố Cổ</h3>
+            <p class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em]">36 Phố Phường · Hồn Phố Ngàn Năm</p>
+          </div>
+          <div class="card-hover absolute inset-0 z-20 p-8 flex flex-col justify-end opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+            <h3 class="font-display text-offwhite text-2xl mb-3" style="font-style:italic;">Phố Cổ – 36 Phố Phường</h3>
+            <div class="w-10 h-px bg-mustard mb-5"></div>
+            <p class="font-serif text-offwhite/90 leading-[1.95] mb-5" style="font-size:0.95rem;">
+              Khu phố cổ Hà Nội là tập hợp của 36 con phố nhỏ mang tên hàng hóa và nghề thủ công truyền thống: Hàng Đào bán tơ lụa, Hàng Bạc đúc kim hoàn, Hàng Mã bán vàng mã... Những ngôi nhà ống hẹp bề ngang nhưng sâu thẳm, mái ngói âm dương phủ rêu phong, ban công sắt uốn cong theo kiểu Pháp — tất cả tạo nên một bức tranh đô thị độc đáo không nơi nào trên thế giới có được. Đêm xuống, những ngọn đèn vàng hắt ánh sáng ấm áp lên mặt đường đá cũ, mùi cà phê phin quyện với mùi ẩm mốc ngọt ngào của thời gian — đó chính là linh hồn của Phố Cổ Hà Nội.
+            </p>
+            <span class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em] flex items-center gap-2">Khám phá thêm <span class="inline-block w-6 h-px bg-mustard"></span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- =============================================
+       CUISINE SECTION
+  ============================================= -->
+  <section id="am-thuc" class="section-breathing bg-emerald relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-mustard/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-offwhite/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+      <div class="text-center mb-28">
+        <p data-aos="fade-down"
+           class="font-sans text-mustard text-xs uppercase tracking-[0.45em] mb-5 flex items-center justify-center gap-4">
+          <span class="inline-block w-10 h-px bg-mustard/50"></span>
+          Hương vị đất kinh kỳ
+          <span class="inline-block w-10 h-px bg-mustard/50"></span>
+        </p>
+        <h2 data-aos="fade-up" class="font-display text-offwhite mb-7 section-title">
+          Ẩm Thực Hà Thành
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="160"
+           class="font-serif text-offwhite/65 text-body max-w-2xl mx-auto" style="font-style:italic; line-height:1.9;">
+          Hai món ăn — hai bài thơ viết bằng hơi nóng của bếp than hoa và sự kiên nhẫn của những người giữ lửa qua bao thế hệ.
+        </p>
+      </div>
+      <!-- Phở Hà Nội -->
+      <div class="mb-36 lg:grid lg:grid-cols-2 lg:gap-24 items-center">
+        <div data-aos="fade-right" data-aos-duration="1200" class="mb-14 lg:mb-0">
+          <div class="relative">
+            <div class="pho-bg-img rounded-2xl overflow-hidden shadow-2xl float-animation w-full h-80 lg:h-[520px]"></div>
+            <div class="absolute -bottom-7 -right-7 bg-mustard rounded-2xl p-5 shadow-xl">
+              <p class="font-display text-emerald-dark text-2xl font-bold leading-none" style="font-style:italic;">Phở</p>
+              <p class="font-sans text-emerald-dark text-[0.65rem] uppercase tracking-widest mt-1">Hà Nội</p>
+            </div>
+            <div class="absolute -top-6 -left-6 w-24 h-24 rounded-full border border-mustard/25 pointer-events-none"></div>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="1200">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <span class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.4em]">Đặc sản kinh điển</span>
+            <span class="w-8 h-px bg-mustard/50"></span>
+          </div>
+          <h3 class="font-display text-offwhite mb-7 cuisine-title">Phở Hà Nội</h3>
+          <p class="font-serif text-offwhite/85 text-body leading-[2.1] mb-6">
+            Nói đến ẩm thực Hà Nội mà không nhắc đến phở, thì đó là một sự thiếu sót không thể tha thứ. Tô phở Hà Nội không phải chỉ là món ăn — đó là một triết lý, một nghi lễ, một tình yêu được gói ghém trong làn nước dùng trong vắt nấu từ hàng chục tiếng đồng hồ với xương bò, gừng nướng, hành nướng và quế, hồi, thảo quả rang thơm phức. Không có rau giá, không có tương hoisin, không có chanh ớt tràn lan — phở Hà Nội tự tin đứng vững bằng chính phẩm cách của mình.
+          </p>
+          <p class="font-serif text-offwhite/70 leading-[2.1] mb-6" style="font-size:1rem;">
+            Những sợi bánh phở mỏng manh, mềm mại nhưng vẫn có độ đàn hồi, được chan ngập trong nước dùng sôi bỏng, thêm vài lát thịt bò tươi hoặc gầu bò mỡ màng béo ngậy. Một chút hành lá thái nhuyễn, một nhúm hành tây thái mỏng ngâm giấm, vài lát gừng tươi — và tô phở hoàn chỉnh. Người ta nói rằng, ăn một tô phở Hà Nội chính gốc vào buổi sáng sớm, khi hơi nóng từ tô phở bốc lên mờ mờ trong không khí se lạnh của Hà Nội mùa đông — đó là một trong những khoảnh khắc hạnh phúc thuần khiết nhất mà cuộc đời có thể ban tặng.
+          </p>
+          <p class="font-serif text-offwhite/70 leading-[2.1]" style="font-size:1rem;">
+            Nghề nấu phở ở Hà Nội được truyền từ đời này sang đời khác như một bí kíp gia truyền. Mỗi quán phở nổi tiếng — Phở Thìn Bờ Hồ, Phở Gia Truyền Bát Đàn — đều có công thức riêng, bí quyết riêng, và thứ đặc biệt nhất không thể học được: đó là tình yêu của người nấu dành cho từng tô phở, từng vị khách quen, từng sáng sớm lạnh giá mà họ thức dậy trước bình minh để nấu nồi nước dùng mới.
+          </p>
+          <div class="grid grid-cols-3 gap-6 mt-12 pt-10 border-t border-offwhite/10">
+            <div class="text-center">
+              <p class="font-display text-mustard text-4xl mb-2" style="font-style:italic;">8h+</p>
+              <p class="font-sans text-offwhite/45 text-[0.65rem] uppercase tracking-wider">Nấu nước dùng</p>
+            </div>
+            <div class="text-center">
+              <p class="font-display text-mustard text-4xl mb-2" style="font-style:italic;">12+</p>
+              <p class="font-sans text-offwhite/45 text-[0.65rem] uppercase tracking-wider">Loại gia vị</p>
+            </div>
+            <div class="text-center">
+              <p class="font-display text-mustard text-4xl mb-2" style="font-style:italic;">100+</p>
+              <p class="font-sans text-offwhite/45 text-[0.65rem] uppercase tracking-wider">Năm lịch sử</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Ornament divider -->
+      <div data-aos="fade-up" class="text-center my-20">
+        <div class="inline-flex items-center gap-7">
+          <span class="w-20 h-px bg-mustard/35"></span>
+          <svg class="w-5 h-5 text-mustard/55" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          <span class="w-20 h-px bg-mustard/35"></span>
+        </div>
+      </div>
+      <!-- Cà Phê Trứng -->
+      <div class="lg:grid lg:grid-cols-2 lg:gap-24 items-center">
+        <div data-aos="fade-right" data-aos-duration="1200" class="mb-14 lg:mb-0 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-3 mb-6">
+            <span class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.4em]">Đặc sản Hà Nội</span>
+            <span class="w-8 h-px bg-mustard/50"></span>
+          </div>
+          <h3 class="font-display text-offwhite mb-7 cuisine-title">Cà Phê Trứng</h3>
+          <p class="font-serif text-offwhite/85 text-body leading-[2.1] mb-6">
+            Câu chuyện của cà phê trứng Hà Nội bắt đầu vào những năm 1940, khi ông Nguyễn Văn Giang — bartender tại khách sạn Metropole huyền thoại — nảy ra ý tưởng táo bạo: dùng lòng đỏ trứng gà đánh bông thay cho sữa tươi vốn khan hiếm trong thời chiến. Không ai ngờ rằng sự sáng tạo bất đắc dĩ ấy lại trở thành một biểu tượng văn hóa tồn tại qua gần một thế kỷ, được cả thế giới biết đến và tìm kiếm.
+          </p>
+          <p class="font-serif text-offwhite/70 leading-[2.1] mb-6" style="font-size:1rem;">
+            Một ly cà phê trứng Hà Nội chính gốc là sự kết hợp hài hòa đến bất ngờ giữa cà phê đen đặc quánh, đắng sâu — với lớp kem trứng vàng óng, béo ngậy, ngọt thanh được đánh bông mịn màng từ lòng đỏ trứng gà, đường cát và sữa đặc. Lớp kem nằm trên mặt cà phê như một đám mây nhỏ, và khi bạn dùng thìa nhẹ nhàng khuấy chúng vào nhau, hương vị phức tạp và quyến rũ ấy sẽ không cho bạn quên.
+          </p>
+          <p class="font-serif text-offwhite/70 leading-[2.1]" style="font-size:1rem;">
+            Tại những quán cà phê trứng nổi tiếng như Cà phê Giảng trên phố Nguyễn Hữu Huân hay Cà phê Đinh trên phố Đinh Tiên Hoàng, người ta không chỉ đến để uống cà phê. Người ta đến để ngồi trong không gian nhỏ bé, cũ kỹ, ánh đèn vàng vọt, nhìn ra phố phường Hà Nội tất bật bên ngoài cánh cửa sổ, và cảm nhận sợi dây vô hình nối mình với Hà Nội của tám, chín mươi năm trước — một thành phố nhỏ, dịu dàng, và vô cùng đáng yêu.
+          </p>
+          <div class="mt-10 p-7 rounded-2xl border border-mustard/20 bg-offwhite/5">
+            <p class="font-sans text-mustard text-[0.7rem] uppercase tracking-[0.3em] mb-4">Bí quyết pha chế</p>
+            <div class="grid grid-cols-2 gap-3">
+              <p class="font-serif text-offwhite/75" style="font-size:0.95rem;">• Lòng đỏ trứng gà ta</p>
+              <p class="font-serif text-offwhite/75" style="font-size:0.95rem;">• Cà phê robusta đặc</p>
+              <p class="font-serif text-offwhite/75" style="font-size:0.95rem;">• Đường cát vàng</p>
+              <p class="font-serif text-offwhite/75" style="font-size:0.95rem;">• Đánh bông tay thủ công</p>
+              <p class="font-serif text-offwhite/75" style="font-size:0.95rem;">• Sữa đặc có đường</p>
+              <p class="font-serif text-offwhite/75" style="font-size:0.95rem;">• Uống khi còn nóng</p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-left" data-aos-duration="1200" class="order-1 lg:order-2">
+          <div class="relative">
+            <div class="caphe-bg-img rounded-2xl overflow-hidden shadow-2xl float-animation w-full h-80 lg:h-[520px]" style="animation-delay: 1.2s;"></div>
+            <div class="absolute -bottom-7 -left-7 bg-mustard rounded-2xl p-5 shadow-xl">
+              <p class="font-display text-emerald-dark text-2xl font-bold leading-none" style="font-style:italic;">Cà Phê</p>
+              <p class="font-sans text-emerald-dark text-[0.65rem] uppercase tracking-widest mt-1">Trứng · Hà Nội</p>
+            </div>
+            <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full border border-mustard/25 pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer class="py-28 relative overflow-hidden bg-emerald-dark">
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div data-aos="fade-up"
+           class="w-20 h-20 rounded-full border-2 border-mustard/35 flex items-center justify-center mx-auto mb-10">
+        <span class="text-mustard font-display text-3xl" style="font-style:italic;">HN</span>
+      </div>
+      <h2 data-aos="fade-up" data-aos-delay="100"
+          class="font-display text-offwhite mb-7" style="font-size:clamp(2rem,5vw,3.5rem); font-style:italic;">
+        Hà Nội — Mãi Trong Tim
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="200"
+         class="font-serif text-offwhite/55 text-body max-w-2xl mx-auto mb-14" style="font-style:italic; line-height:2;">
+        Dù bạn đến Hà Nội lần đầu hay đã nghìn lần qua lại, thành phố này vẫn luôn có một điều gì đó mới mẻ để trao tặng — một góc phố chưa từng bước vào, một mùi hương chưa từng ngửi thấy, một khoảnh khắc chưa từng chứng kiến. Đó là phép màu của một thành phố đã sống qua nghìn năm và vẫn chưa dừng lại.
+      </p>
+      <div data-aos="fade-up" data-aos-delay="300"
+           class="flex flex-wrap items-center justify-center gap-5 mb-16">
+        <a href="#hero"       class="font-sans text-mustard text-[0.65rem] uppercase tracking-[0.3em] hover:text-mustard/65 transition-colors">Về Đầu Trang</a>
+        <span class="w-1 h-1 rounded-full bg-mustard/35"></span>
+        <a href="#lich-su"    class="font-sans text-offwhite/35 text-[0.65rem] uppercase tracking-[0.3em] hover:text-offwhite/65 transition-colors">Lịch Sử</a>
+        <span class="w-1 h-1 rounded-full bg-mustard/35"></span>
+        <a href="#mua-thu"   class="font-sans text-offwhite/35 text-[0.65rem] uppercase tracking-[0.3em] hover:text-offwhite/65 transition-colors">Mùa Thu</a>
+        <span class="w-1 h-1 rounded-full bg-mustard/35"></span>
+        <a href="#danh-thang" class="font-sans text-offwhite/35 text-[0.65rem] uppercase tracking-[0.3em] hover:text-offwhite/65 transition-colors">Danh Thắng</a>
+        <span class="w-1 h-1 rounded-full bg-mustard/35"></span>
+        <a href="#am-thuc"    class="font-sans text-offwhite/35 text-[0.65rem] uppercase tracking-[0.3em] hover:text-offwhite/65 transition-colors">Ẩm Thực</a>
+      </div>
+      <div class="border-t border-offwhite/8 pt-8">
+        <p class="font-sans text-offwhite/25 text-[0.65rem] tracking-[0.2em]">
+          &copy; 2024 · Hà Nội – Nghìn Năm Văn Hiến · Tôn vinh văn hóa và lịch sử Thủ đô
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>

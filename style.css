@@ -1,0 +1,667 @@
+/* =====================================================
+   style.css — Hà Nội: Nghìn Năm Văn Hiến  (v2)
+   Palette:
+     Deep Emerald   #0F4C43
+     Warm Mustard   #E3A857
+     Soft Off-White #F9F6F0
+   Typography:
+     Display : Playfair Display
+     Body    : Lora
+     UI/Label: Inter
+===================================================== */
+/* ─── SMOOTH SCROLL ───────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;   /* offset for fixed navbar */
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* ─── BASE ────────────────────────────────────────── */
+body {
+  background-color: #F9F6F0;
+  color: #7aa09a;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.125rem;       /* 18 px base — Vietnamese diacritics breathe */
+  line-height: 2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+/* ─── EDITORIAL SECTION SPACING ──────────────────── */
+.section-breathing {
+  padding-top:    9rem;   /* 144 px */
+  padding-bottom: 9rem;
+}
+@media (max-width: 768px) {
+  .section-breathing {
+    padding-top:    5rem;
+    padding-bottom: 5rem;
+  }
+}
+/* ─── TYPOGRAPHY SCALE ───────────────────────────── */
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3.5rem, 13vw, 9.5rem);
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  /* Text-shadow for contrast against hero background */
+  text-shadow:
+    0 2px 30px rgba(0, 0, 0, 0.55),
+    0 4px 60px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, #F9F6F0 0%, rgba(249,246,240,0.78) 50%, #E3A857 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* For browsers that don't support gradient text */
+@supports not (-webkit-background-clip: text) {
+  .hero-title {
+    color: #F9F6F0;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.55);
+  }
+}
+.hero-lead {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 2;
+  /* Subtle text shadow for hero legibility */
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+.era-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.cuisine-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+}
+/* ─── KEYFRAME: FLOAT (antigravity drift) ────────── */
+@keyframes float {
+  0%   { transform: translateY(0px)    rotate(0deg);    }
+  33%  { transform: translateY(-15px)  rotate(0.4deg);  }
+  66%  { transform: translateY(-8px)   rotate(-0.3deg); }
+  100% { transform: translateY(0px)    rotate(0deg);    }
+}
+/* ─── KEYFRAME: ORB PULSE ────────────────────────── */
+@keyframes orbPulse {
+  0%, 100% { transform: scale(1) translate(0,0);          opacity: 0.14; }
+  50%       { transform: scale(1.25) translate(18px,-18px); opacity: 0.24; }
+}
+/* ─── KEYFRAME: SHIMMER ──────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+/* ─── KEYFRAME: GRADIENT SHIFT ───────────────────── */
+@keyframes gradientShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+/* ─── KEYFRAME: SCROLL DROP ──────────────────────── */
+@keyframes scrollDrop {
+  0%   { transform: translateX(-50%) translateY(0);    opacity: 1; }
+  80%  { transform: translateX(-50%) translateY(38px); opacity: 0; }
+  100% { transform: translateX(-50%) translateY(0);    opacity: 0; }
+}
+/* ─── KEYFRAME: ACCORDION OPEN ───────────────────── */
+@keyframes accordionOpen {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+/* ─── FLOAT UTILITY ──────────────────────────────── */
+.float-animation {
+  animation: float 7s ease-in-out infinite;
+}
+/* ─── SCROLL DROP DOT ────────────────────────────── */
+.scroll-drop {
+  animation: scrollDrop 2.2s ease-in-out infinite;
+}
+/* =====================================================
+   NAVIGATION
+===================================================== */
+.glass-nav {
+  background: rgba(15, 76, 67, 0.12);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border-bottom: 1px solid rgba(227, 168, 87, 0.08);
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+.glass-nav.scrolled {
+  background: rgba(10, 53, 48, 0.94);
+  box-shadow: 0 4px 44px rgba(0, 0, 0, 0.28);
+}
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #E3A857;
+  transition: width 0.35s ease;
+}
+.nav-link:hover::after { width: 100%; }
+.logo-emblem { transition: transform 0.35s ease; }
+.nav-logo:hover .logo-emblem { transform: rotate(8deg) scale(1.08); }
+/* =====================================================
+   HERO SECTION
+===================================================== */
+.hero-section {
+  background-color: #071f1c;
+  position: relative;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(227, 168, 87, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(26, 107, 94, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(15, 76, 67, 0.15) 0%, transparent 40%),
+    /* Hạ opacity của lớp phủ tuyến tính xuống khoảng 0.45 - 0.6 để ảnh rõ ràng hơn */
+    linear-gradient(135deg, rgba(7, 31, 28, 0.6) 0%, rgba(10, 53, 48, 0.45) 50%, rgba(7, 31, 28, 0.65) 100%),
+    url('Images/hero_bg.jpeg') !important; /* Đổi đúng tên file hanoi.jpg của bạn trong folder */
+  background-size: cover !important;
+  background-position: center 25% !important; /* Dịch chuyển tâm ảnh lên một chút để thấy rõ ngọn Tháp Rùa */
+  background-repeat: no-repeat !important;
+}
+.hero-content h1,
+.hero-title{
+    color:#F9F6F0 !important;
+    -webkit-text-fill-color:#F9F6F0 !important;
+    background:none !important;
+
+    text-shadow:
+        0 4px 15px rgba(0,0,0,.95),
+        0 8px 40px rgba(0,0,0,.75);
+
+    font-weight:700!important;
+}
+.hero-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(7, 31, 28, 0.25) 0%,
+    rgba(7, 31, 28, 0.08) 40%,
+    rgba(7, 31, 28, 0.55) 100%
+  );
+}
+.orb {
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  animation: orbPulse 10s ease-in-out infinite;
+}
+.orb-1 {
+  width: 650px; height: 650px;
+  background: radial-gradient(circle, rgba(227,168,87,0.11) 0%, transparent 70%);
+  top: -12%; right: -12%;
+  animation-delay: 0s;
+}
+.orb-2 {
+  width: 540px; height: 540px;
+  background: radial-gradient(circle, rgba(26,107,94,0.18) 0%, transparent 70%);
+  bottom: -12%; left: -12%;
+  animation-delay: 5s;
+}
+/* ─── HERO BUTTONS ───────────────────────────────── */
+.hero-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.hero-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #E3A857 0%, #c48a35 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  border-radius: inherit;
+}
+.hero-btn-primary:hover::before { opacity: 1; }
+.hero-btn-primary span,
+.hero-btn-primary:hover { position: relative; z-index: 1; }
+/* =====================================================
+   BACKGROUND COLORS
+===================================================== */
+.bg-emerald      { background-color: #0F4C43; }
+.bg-emerald-dark { background-color: #0a3530; }
+.bg-offwhite-warm { background-color: #339b39; }
+/* =====================================================
+   HISTORY SECTION
+===================================================== */
+.era-img-1 {
+  background-image: 
+    /* Hạ độ đậm lớp phủ xuống 0.45 để hình ảnh tư liệu hiện rõ, trong trẻo hơn */
+    linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 60%), 
+    url('Images/era-img-1.webp') !important; /* Đảm bảo tên file ảnh trong thư mục images trùng khớp */
+  
+  /* Cấu hình tự co giãn ôm khít khung hình, không lo bị méo hay vỡ ảnh */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.era-img-1::before {
+  /* content: ''; */
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 42%, rgba(227,168,87,0.18) 0%, transparent 55%),
+    radial-gradient(circle at 72% 68%, rgba(15,76,67,0.35) 0%, transparent 45%);
+}
+.era-img-2 {
+  background-image: 
+    linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.15) 60%), 
+    url('Images/era_img_2.jpg') !important;
+  
+  /* CÁCH LẤY FULL ẢNH ĐẸP NHẤT */
+  background-size: 100% 100% !important; /* Ép ảnh co giãn vừa khít 100% chiều ngang và chiều dọc của khung */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.era-img-2::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 50% 42%, rgba(139,69,19,0.28) 0%, transparent 60%);
+}
+.era-img-3 {
+  background-image: 
+    /* Giữ lớp phủ mờ dịu (opacity 0.4 - 0.5) để thấy rõ nét nhà cổ, con phố đằng sau */
+    linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 60%), 
+    url('Images/Unconfirmed\ 491822.crdownload') !important; /* Khớp đúng tên file ảnh trong thư mục images của bạn */
+  
+  /* ĐỊNH DẠNG FULL HÌNH CHUẨN TỶ LỆ KHÔNG BỊ XOÁN HOẶC MÉO */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  
+  /* Ép tỷ lệ khung hình (aspect-ratio) tương đương ảnh gốc giúp lấy tối đa góc nhìn */
+  height: auto !important;
+  aspect-ratio: 4 / 3 !important; /* Phố cổ xưa thường có file ảnh tỉ lệ 4:3 hoặc 16:9, bạn có thể chỉnh lại cho vừa mắt */
+}
+.era-img-3::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 48% 44%, rgba(139,105,20,0.25) 0%, transparent 55%);
+}
+.era-image-frame {
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+.era-image-frame:hover {
+  transform: translateY(-7px) scale(1.008);
+  box-shadow: 0 32px 64px rgba(0,0,0,0.22);
+}
+.glass-caption {
+  background: rgba(15,76,67,0.4);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(249,246,240,0.1);
+}
+.quote-break {
+  position: relative;
+}
+/* =====================================================
+   AUTUMN SECTION
+===================================================== */
+/* Atmospheric autumn banner gradient */
+/* Tấm ảnh phần Mùa Thu Hà Nội - Hiện rõ lá vàng nguyên bản */
+.autumn-bg {
+  position: relative;
+  /* Thay dải màu lục/cam cũ bằng một lớp phủ đen mờ trong suốt (rgba đen nhẹ) chỉ ở phía dưới để kích chữ, phía trên để ảnh nguyên bản */
+  background-image: 
+    linear-gradient(to top, rgba(7, 31, 28, 0.75) 0%, rgba(7, 31, 28, 0.3) 50%, transparent 100%), 
+    url('images/autumn_bg.jpg') !important; 
+  
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Đẩy mạnh độ nổi khối cho text để đọc siêu rõ trên nền ảnh sáng */
+.autumn-bg h2,
+.autumn-bg .hero-lead, /* Hoặc class text nhỏ màu vàng của bạn */
+.autumn-bg p {
+  color: #ffffff !important;
+  text-shadow: 2px 3px 12px rgba(0, 0, 0, 0.95), 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Riêng tiêu đề lớn "Khi Thành Phố Khoác Áo Vàng" có thể giữ màu vàng sáng hoặc trắng tinh */
+.autumn-bg h2 {
+  color: #FFF !important; /* Đổi sang trắng hẳn hoặc #E3A857 nếu muốn giữ tông vàng gold */
+  font-weight: 700 !important;
+}
+.autumn-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 60%, rgba(200,100,30,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 30%, rgba(227,168,87,0.18) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(15,76,67,0.3) 0%, transparent 35%);
+}
+.autumn-hero-text {
+  background: linear-gradient(to top, rgba(7,31,28,0.75) 0%, transparent 100%);
+}
+/* Autumn sensory cards */
+.autumn-card {
+  background: white;
+  border: 1px solid rgba(15,76,67,0.08);
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.autumn-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 56px rgba(15,76,67,0.12);
+  border-color: rgba(227,168,87,0.3);
+}
+.autumn-card-icon {
+  width: 3rem; height: 3rem;
+  background: linear-gradient(135deg, rgba(227,168,87,0.15), rgba(15,76,67,0.08));
+  border: 1px solid rgba(227,168,87,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+  transition: background 0.35s ease;
+}
+.autumn-card:hover .autumn-card-icon {
+  background: linear-gradient(135deg, rgba(227,168,87,0.3), rgba(15,76,67,0.12));
+}
+/* Autumn narrative image */
+/* Tấm ảnh chi tiết phần Mùa Thu Hà Nội (Cận cảnh tháng 10) */
+.autumn-img-1 {
+  /* Loại bỏ hoàn toàn dải màu chuyển sắc cam/nâu cũ để lộ ảnh gốc 100% */
+  background: url('Images/autumn_img_1.jpg') !important; /* Đảm bảo tên file ảnh trong thư mục images trùng khớp */
+  
+  /* Cấu hình hiển thị full hình chuẩn tỷ lệ, tự co giãn ôm khít khung chứa */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+/* =====================================================
+   CULTURAL TRIVIA ACCORDION
+===================================================== */
+.accordion-item {
+  background: rgba(249,246,240,0.05);
+  transition: background 0.35s ease;
+}
+.accordion-item:hover {
+  background: rgba(249,246,240,0.07);
+}
+.accordion-trigger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.accordion-trigger:hover {
+  background: rgba(227,168,87,0.04);
+}
+.accordion-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.accordion-body {
+  animation: accordionOpen 0.35s ease forwards;
+}
+/* Rotate chevron when open */
+.accordion-item.open .accordion-chevron svg {
+  transform: rotate(180deg);
+}
+.accordion-item.open .accordion-chevron {
+  border-color: rgba(227,168,87,0.8);
+  background: rgba(227,168,87,0.1);
+}
+/* =====================================================
+   LANDMARK CARDS
+===================================================== */
+.landmark-card { min-height: 500px; }
+/* Thẻ Landmark - Hồ Hoàn Kiếm */
+.hoan-kiem-bg {
+  /* Phủ một lớp gradient tối nhẹ ở đáy (0.6) để làm nổi bật chữ trắng, phía trên giữ trong suốt để lộ ảnh rõ ràng */
+  background-image: linear-gradient(to top, rgba(7, 31, 28, 0.7) 0%, rgba(7, 31, 28, 0.2) 50%, transparent 100%), url('Images/hoankiem.webp') !important; /* Đảm bảo file hoan_kiem_bg.jpg đã có trong folder images */
+  
+  /* Cấu hình hiển thị full hình chuẩn, tự co giãn ôm khít khung */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  
+  /* Tạo độ mượt mà khi di chuột vào (Hover) */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Đổ bóng sắc nét cho chữ tiêu đề bên trong thẻ Hồ Hoàn Kiếm để text luôn dễ đọc */
+.landmark-card:hover .hoan-kiem-bg {
+  transform: scale(1.06) !important; /* Hiệu ứng zoom nhẹ vị trí nền ảnh khi hover card */
+}
+
+.hoan-kiem-bg h3,
+.hoan-kiem-bg p {
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.95) !important;
+}
+/* Thẻ Landmark - Văn Miếu Quốc Tử Giám */
+.van-mieu-bg {
+  /* Giữ lớp phủ gradient tối nhẹ ở đáy để kích chữ trắng nổi lên, phía trên trong suốt hoàn toàn */
+  background-image: linear-gradient(to top, rgba(7, 31, 28, 0.7) 0%, rgba(7, 31, 28, 0.2) 50%, transparent 100%), url('Images/vanmieu.jpg') !important; /* Khớp đúng tên file van_mieu_bg.jpg trong folder images */
+  
+  /* Cấu hình hiển thị full hình chuẩn, tự co giãn ôm khít khung chứa */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  
+  /* Tạo độ mượt mà khi di chuột vào (Hover) */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Hiệu ứng phóng to nền ảnh đồng bộ khi hover card */
+.landmark-card:hover .van-mieu-bg {
+  transform: scale(1.06) !important;
+}
+
+/* Đổ bóng sắc nét giúp tiêu đề chữ trắng cực kỳ dễ đọc trên nền ảnh Văn Miếu */
+.van-mieu-bg h3,
+.van-mieu-bg p {
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.95) !important;
+}
+/* Thẻ Landmark - Phố Cổ Hà Nội */
+.pho-co-bg {
+  /* Giữ lớp phủ gradient tối nhẹ ở đáy để kích chữ trắng nổi lên, phần trên để ảnh nguyên bản */
+  background-image: linear-gradient(to top, rgba(7, 31, 28, 0.7) 0%, rgba(7, 31, 28, 0.2) 50%, transparent 100%), url('Images/phoco.webp') !important; /* Khớp đúng tên file pho_co_bg.jpg trong folder images của bạn */
+  
+  /* Cấu hình hiển thị full hình chuẩn, tự co giãn ôm khít khung chứa */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  
+  /* Tạo độ mượt mà khi di chuột vào (Hover) */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Hiệu ứng phóng to nền ảnh đồng bộ khi hover card */
+.landmark-card:hover .pho-co-bg {
+  transform: scale(1.06) !important;
+}
+
+/* Đổ bóng sắc nét giúp tiêu đề chữ trắng cực kỳ dễ đọc trên nền ảnh Phố Cổ */
+.pho-co-bg h3,
+.pho-co-bg p {
+  text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.95) !important;
+}
+.card-overlay {
+  background: linear-gradient(to top, rgba(7,31,28,0.92) 0%, rgba(7,31,28,0.38) 55%, rgba(7,31,28,0.08) 100%);
+}
+.landmark-card:hover .card-overlay {
+  background: linear-gradient(to top, rgba(7,31,28,0.97) 0%, rgba(7,31,28,0.82) 60%, rgba(7,31,28,0.5) 100%);
+}
+.card-icon {
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+.landmark-card:hover .card-icon {
+  transform: scale(1.12);
+  border-color: rgba(227,168,87,0.9);
+}
+/* =====================================================
+   CUISINE SECTION
+===================================================== */
+/* Khung ảnh Ẩm thực - Phở Hà Nội */
+/* Tối ưu hóa khung chứa ảnh bát phở */
+.pho-bg-img {
+  /* Loại bỏ hoàn toàn dải màu gradient làm tối ảnh, để ảnh tự tỏa sáng */
+  background: url('Images/phoooooo.jpg') no-repeat center center !important;
+  
+  /* Đảm bảo ảnh phủ kín khung, không bị méo */
+  background-size: cover !important;
+  
+  /* Cấu hình khung chứa để ảnh không bị "nhảy" lung tung */
+  width: 100% !important;
+  height: 450px !important; /* Bạn có thể điều chỉnh chiều cao này cho hợp với cột văn bản bên cạnh */
+  
+  /* Bo góc sang trọng */
+  border-radius: 20px !important;
+  
+  /* Hiệu ứng đổ bóng nhẹ làm nổi bật khối ảnh so với nền xanh */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  
+  /* Tạo hiệu ứng mượt mà khi hover */
+  transition: all 0.4s ease !important;
+  overflow: hidden !important;
+}
+
+/* Hover phóng to nhẹ bát phở cho thêm "đói" mắt */
+.food-card:hover .pho-bg-img {
+  transform: scale(1.05) !important;
+}
+
+/* Làm chữ tiêu đề nổi bật trên nền bát phở */
+.pho-bg-img h3 {
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9) !important;
+  color: #FFF !important;
+}
+.pho-bg-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse at 40% 62%, rgba(200,100,30,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse at 72% 32%, rgba(227,168,87,0.14) 0%, transparent 40%);
+}
+/* Tối ưu hóa khung chứa ảnh Cà phê trứng */
+.caphe-bg-img {
+  /* Loại bỏ lớp phủ tối để lộ màu sắc nguyên bản của ly cà phê */
+  background: url('Images/ca_phe_trung.jpg') no-repeat center center !important;
+  
+  /* Đảm bảo ảnh phủ kín khung, không bị méo */
+  background-size: cover !important;
+  
+  /* Khóa cứng kích thước để cân đối với khung hình bát phở bên trên */
+  width: 100% !important;
+  height: 450px !important; 
+  
+  /* Bo góc đồng bộ với các phần khác của website */
+  border-radius: 20px !important;
+  
+  /* Đổ bóng nhẹ để ly cà phê trông "nổi" trên nền xanh của trang */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  
+  /* Hiệu ứng chuyển động khi di chuột qua */
+  transition: all 0.4s ease !important;
+  overflow: hidden !important;
+}
+
+.caphe-bg-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse at 52% 52%, rgba(155,80,32,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 22%, rgba(200,120,64,0.18) 0%, transparent 40%);
+}
+/* =====================================================
+   SCROLL PROGRESS BAR
+===================================================== */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #0F4C43, #E3A857, #0F4C43);
+  background-size: 200% 100%;
+  z-index: 9999;
+  transition: width 0.1s linear;
+  animation: shimmer 3s linear infinite;
+}
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS
+===================================================== */
+@media (max-width: 768px) {
+  .hero-title { font-size: clamp(3rem, 16vw, 5.5rem); }
+  .section-title { font-size: clamp(2rem, 9vw, 3.5rem); }
+  .landmark-card { min-height: 380px; }
+  /* On touch: show hover content permanently */
+  .card-hover {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .card-default { display: none; }
+  .landmarks-grid { grid-template-columns: 1fr !important; }
+  .autumn-card { padding: 2rem; }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(2.6rem, 18vw, 4.2rem); }
+}
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F9F6F0; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #0F4C43, #E3A857);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: #E3A857; }
+/* =====================================================
+   SELECTION & FOCUS
+===================================================== */
+::selection {
+  background: rgba(227, 168, 87, 0.28);
+  color: #0F4C43;
+}
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #E3A857;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+/* =====================================================
+   AOS OVERRIDE
+===================================================== */
+[data-aos]             { pointer-events: none; }
+[data-aos].aos-animate { pointer-events: auto; }
+/* =====================================================
+   PRINT
+===================================================== */
+@media print {
+  .glass-nav, .orb, .scroll-indicator, #scroll-progress { display: none; }
+  body { color: #000; background: #fff; font-size: 12pt; }
+  .section-breathing { padding: 2rem 0; }
+}
