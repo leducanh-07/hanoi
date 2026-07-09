@@ -332,8 +332,7 @@ body {
   position: relative;
   /* Thay dải màu lục/cam cũ bằng một lớp phủ đen mờ trong suốt (rgba đen nhẹ) chỉ ở phía dưới để kích chữ, phía trên để ảnh nguyên bản */
   background-image: 
-    linear-gradient(to top, rgba(7, 31, 28, 0.75) 0%, rgba(7, 31, 28, 0.3) 50%, transparent 100%), 
-    url('Images/autumn_bg.jpg') !important; 
+    linear-gradient(to top, rgba(7, 31, 28, 0.75) 0%, rgba(7, 31, 28, 0.3) 50%, transparent 100%), url('Images/autumn_bg.jpg') !important; 
   
   background-size: cover !important;
   background-position: center !important;
