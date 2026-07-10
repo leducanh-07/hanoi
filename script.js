@@ -152,27 +152,24 @@ document.addEventListener('DOMContentLoaded', function () {
     frame.addEventListener('mouseleave', () => {
       frame.style.transform = '';
       frame.style.boxShadow = '';
-  });
+    });
+  }); // <-- ĐÃ SỬA: Thêm dấu đóng ngoặc bị thiếu ở đây
   /* ===================================================
      10. ACCORDION INTERACTION
   ==================================================== */
   const accordionItems = document.querySelectorAll('.accordion-item');
   accordionItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      // Allow clicking inside the open body without collapsing it, 
-      // but clicking the trigger or anywhere else on the card toggles it.
       if (e.target.closest('.accordion-collapse')) return;
       
       const isOpen = item.classList.contains('open');
       
-      // Close all items
       accordionItems.forEach(acc => {
         acc.classList.remove('open');
         const trigger = acc.querySelector('.accordion-trigger');
         if (trigger) trigger.setAttribute('aria-expanded', 'false');
       });
       
-      // Open the clicked item if it wasn't already open
       if (!isOpen) {
         item.classList.add('open');
         const trigger = item.querySelector('.accordion-trigger');
@@ -190,10 +187,8 @@ document.addEventListener('DOMContentLoaded', function () {
       AOS.refresh();
     }, 200);
   });
-}); // end DOMContentLoaded
-/* =====================================================
-   GLOBAL HELPER — Close mobile menu (used in HTML onclick)
-===================================================== */
+});
+
 function closeMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
   if (mobileMenu) {
