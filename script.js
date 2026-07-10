@@ -152,10 +152,36 @@ document.addEventListener('DOMContentLoaded', function () {
     frame.addEventListener('mouseleave', () => {
       frame.style.transform = '';
       frame.style.boxShadow = '';
+  });
+  /* ===================================================
+     10. ACCORDION INTERACTION
+  ==================================================== */
+  const accordionItems = document.querySelectorAll('.accordion-item');
+  accordionItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Allow clicking inside the open body without collapsing it, 
+      // but clicking the trigger or anywhere else on the card toggles it.
+      if (e.target.closest('.accordion-collapse')) return;
+      
+      const isOpen = item.classList.contains('open');
+      
+      // Close all items
+      accordionItems.forEach(acc => {
+        acc.classList.remove('open');
+        const trigger = acc.querySelector('.accordion-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      });
+      
+      // Open the clicked item if it wasn't already open
+      if (!isOpen) {
+        item.classList.add('open');
+        const trigger = item.querySelector('.accordion-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      }
     });
   });
   /* ===================================================
-     10. AOS REFRESH on window resize (debounced)
+     11. AOS REFRESH on window resize (debounced)
   ==================================================== */
   let resizeTimer;
   window.addEventListener('resize', () => {

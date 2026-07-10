@@ -291,7 +291,7 @@ body {
   background-image: 
     /* Giữ lớp phủ mờ dịu (opacity 0.4 - 0.5) để thấy rõ nét nhà cổ, con phố đằng sau */
     linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 60%), 
-    url('Images/Unconfirmed\ 491822.crdownload') !important; /* Khớp đúng tên file ảnh trong thư mục images của bạn */
+    url('Images/era_img_3.webp') !important; /* Khớp đúng tên file ảnh trong thư mục images của bạn */
   
   /* ĐỊNH DẠNG FULL HÌNH CHUẨN TỶ LỆ KHÔNG BỊ XOÁN HOẶC MÉO */
   background-size: cover !important;
@@ -423,8 +423,15 @@ body {
   font-size: 2.2rem;
   line-height: 1;
 }
-.accordion-body {
-  animation: accordionOpen 0.35s ease forwards;
+.accordion-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  opacity: 0.5;
+}
+.accordion-item.open .accordion-collapse {
+  grid-template-rows: 1fr;
+  opacity: 1;
 }
 /* Rotate chevron when open */
 .accordion-item.open .accordion-chevron svg {
